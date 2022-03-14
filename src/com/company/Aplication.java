@@ -3,6 +3,7 @@ package com.company;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -17,7 +18,7 @@ public class Aplication {
         app.getMostAwardedActress();
         app.getMostAwardedActressBetween20And30Years();
         app.getPeopleWithMoreThanOneAward();
-        app.getPersonResume("Tom Hanks");
+        app.getPersonResume();
     }
 
     private void getYoungestActorWinner() {
@@ -66,15 +67,22 @@ public class Aplication {
                         + c.getValue() + " prêmios."));
     }
 
-    private void getPersonResume(String name) {
+    private String getScannerText(){
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextLine();
+    }
+
+    private void getPersonResume() {
+        System.out.println("Digite o nome do artista a ser procurado: ");
+        final var artistName = getScannerText();
         List<AwardItem> personAwards = Stream.concat(this.femaleList.stream(), this.maleList.stream())
-                .filter(item -> item.getWinnerName().equals(name))
+                .filter(item -> item.getWinnerName().equals(artistName))
                 .collect(Collectors.toList());
 
         if(personAwards.isEmpty()){
             System.out.println("Não foram encontrados prêmios para a pessoa solicitada.");
         }else {
-            System.out.println(name+" ganhou "+personAwards.size()+" prêmios, dentre eles:");
+            System.out.println(artistName+" ganhou "+personAwards.size()+" prêmios, dentre eles:");
             personAwards.forEach(item -> System.out.println(
                     item.getMovieName()+" em "+
                         item.getYearOfAward().getYear()+" com "+

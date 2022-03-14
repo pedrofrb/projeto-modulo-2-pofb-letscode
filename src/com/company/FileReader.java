@@ -13,10 +13,10 @@ public class FileReader {
     private final List<AwardItem> awardItemList;
 
     public FileReader(String filename) {
-        this.awardItemList = lerArquivo(filename);
+        this.awardItemList = readFile(filename);
     }
 
-    private List<AwardItem> lerArquivo(String filename) {
+    private List<AwardItem> readFile(String filename) {
         try (Stream<String> fileLines = Files.lines(Paths.get(filename))) {
             return fileLines
                     .skip(1)

@@ -3,7 +3,6 @@ package com.company;
 import java.time.LocalDate;
 
 public class AwardItem {
-    //0:Index; 1:Year; 2:Age; 3:Name; 4:Movie
     private String winnerName;
     private int winnerAge;
     private LocalDate yearOfAward;
