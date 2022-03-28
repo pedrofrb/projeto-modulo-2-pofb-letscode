@@ -67,7 +67,7 @@ public class Aplication {
                         + c.getValue() + " prêmios."));
     }
 
-    private String getScannerText(){
+    private String getScannerText() {
         Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
     }
@@ -79,19 +79,16 @@ public class Aplication {
                 .filter(item -> item.getWinnerName().equals(artistName))
                 .collect(Collectors.toList());
 
-        if(personAwards.isEmpty()){
+        if (personAwards.isEmpty()) {
             System.out.println("Não foram encontrados prêmios para a pessoa solicitada.");
-        }else {
-            System.out.println(artistName+" ganhou "+personAwards.size()+" prêmios, dentre eles:");
+        } else {
+            System.out.println(artistName + " ganhou " + personAwards.size() + " prêmios, dentre eles:");
             personAwards.forEach(item -> System.out.println(
-                    item.getMovieName()+" em "+
-                        item.getYearOfAward().getYear()+" com "+
-                        item.getWinnerAge()+" anos de idade."
-                    ));
+                    item.getMovieName() + " em " +
+                            item.getYearOfAward().getYear() + " com " +
+                            item.getWinnerAge() + " anos de idade."
+            ));
         }
-
-
-
 
 
     }
